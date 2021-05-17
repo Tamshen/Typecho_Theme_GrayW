@@ -1,0 +1,646 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Open Sans Light", PingFangTC-light, "Segoe UI Light", "Microsoft Jhenghei", "Microsoft YaHei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "LiHei Pro Medium", "Apple LiGothic Medium", STXihei, STHeiti-Light, STheiti, DroidSansFallback, sans-serif;
+}
+
+* {
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+
+h1 {
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+input,
+textarea {
+    outline: none;
+    border-top: 1px solid #00000000!important;
+    border-left: 1px solid #00000000!important;
+    border-right: 1px solid #00000000!important;
+    /*border: 1px solid #ccc!important;*/
+}
+
+input:focus,
+textarea:focus {
+    border: 1px solid #808080!important;
+}
+
+
+/*网页宽度*/
+
+.tsw {
+    max-width: 1200px;
+}
+
+header {
+    padding: 50px 5px;
+}
+
+.goTop {
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    border: 1rem solid rgba(0, 0, 0, 0);
+    border-bottom: 1.5rem solid #616161;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    cursor: pointer;
+}
+
+
+/*超过省略*/
+
+.cgyc {
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#hitokoto {
+    white-space: inherit;
+}
+
+
+/*去a下划线*/
+
+a {
+    text-decoration: none;
+}
+
+
+/*sidebar avatar*/
+
+.sidebar .avatar,
+.c-body img {
+    margin-right: 16px!important;
+    border-radius: 50%!important;
+    float: left!important;
+}
+
+
+/*文章页*/
+
+.post-title {
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.article {}
+
+.article img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+pre {
+    background: #2f2f2d;
+    color: #00bacf;
+    padding: 8px;
+    font-size: 0.5em;
+}
+
+
+/*链接*/
+
+.article a {
+    border-bottom: .5px dashed rgba(40, 40, 40, 0.50);
+}
+
+.article a:hover {
+    border-bottom: .5px solid rgba(40, 40, 40, 0.50);
+}
+
+
+/*文章页-表格*/
+
+.article table {
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-left: none;
+    word-break: normal;
+}
+
+.article table th,
+.article table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+.article table tr:nth-of-type(2n) {
+    background-color: hsla(0, 0%, 71%, .1);
+}
+
+.article h1,
+.article h2,
+.article h3,
+.article h4,
+.article h5,
+.article h6 {
+    color: #282828;
+    margin: 2em auto;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.article kbd {
+    background: #f1f1f1;
+    padding: 2px 8px;
+    border-radius: 2px;
+}
+
+.article p {
+    font-size: 16px;
+    line-height: 2;
+    text-align: justify;
+    margin: 20px auto;
+}
+
+.article ul {
+    margin-left: -20px;
+}
+
+.article li {
+    margin: 14px 0;
+}
+
+.article li p {
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.article hr {
+    border: 0;
+    border-bottom: 1px dashed #cfcfcf;
+    margin: 30px 0;
+}
+
+.article blockquote {
+    padding: 10px 15px;
+    border-left-style: solid;
+    border-left-width: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-color: #D6DBDF;
+    background: none repeat scroll 0 0 rgba(102, 128, 153, .05);
+}
+
+.article ol {
+    padding-left: 40px;
+}
+
+
+/*评论*/
+
+.c-body:hover .r {
+    display: initial!important;
+}
+
+ol {
+    padding-left: 0
+}
+
+ol ol {
+    padding-left: 40px;
+}
+
+#author_info:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin-bottom: 12px;
+}
+
+#cancel-comment-reply-link {
+    border-bottom: 1px solid #808080;
+}
+
+#comments {
+    display: none;
+    padding-bottom: 5px;
+}
+
+.plbq {
+    font-size: 12px;
+    padding: 0.01em 6px;
+}
+
+.plbq li:hover {
+    background: #ededed;
+}
+
+.plbq li {
+    float: left;
+    padding: 2px 5px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.plbq ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plbq:after,
+.plbq ul {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* page-navigator */
+
+.page-navigator {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    line-height: 32px;
+}
+
+.page-navigator li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.page-navigator li a {
+    display: block;
+    padding: 0 12px;
+    -webkit-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
+    -webkit-transition: background-color .3s, color .15s, opacity 0.3s, -webkit-box-shadow .3s;
+    transition: background-color .3s, color .15s, opacity 0.3s, -webkit-box-shadow .3s;
+    -o-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
+    transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
+    transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s, -webkit-box-shadow .3s;
+}
+
+.page-navigator li a:hover {
+    background-color: #cccccc;
+}
+
+.page-navigator li.current a {
+    border: none;
+    cursor: default;
+    border: 1px solid #ddd;
+}
+
+.page-navigator li.current a:hover {
+    background-color: #fff;
+}
+
+
+/*top*/
+
+#scrollto {
+    display: none;
+}
+
+
+/*404*/
+
+.ym404 {
+    margin: 8.88% 0;
+}
+
+
+/*滚动条*/
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 16px;
+    background-color: #F5F5F5;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #616161;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #ddd;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ddd;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ddd;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #ddd;
+}
+
+
+/*图标*/
+
+.ico_box {
+    position: relative;
+}
+
+.ico_box .icon {
+    left: 2px;
+    top: 3px;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentcolor;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.ico_box .text {
+    margin-left: 23px;
+}
+
+
+/*zhuyemian*/
+
+.post-info {
+    font-size: 1.08rem;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.post-info .author img {
+    border: #f1f1f1 solid 2px;
+    border-radius: 50%;
+    margin-right: 2px;
+}
+
+.post-list h1,
+.post-list h2,
+.post-list h3,
+.post-list h4,
+.post-list h5,
+.post-list h6 {
+    margin: 15px -16px 0 0px;
+}
+
+.post-list .more {
+    display: none;
+}
+
+.post-author img {
+    border-radius: 50%;
+    border: #f1f1f1 solid 4px;
+}
+
+.netcomment .avatar {
+    border: #f1f1f1 solid 2px;
+}
+
+
+/*侧边栏-作者*/
+
+.post-author .avatart {
+    padding: 2.5em 1em;
+}
+
+.post-author .avatart img {
+    border-radius: 50%;
+    border: #f1f1f1 solid 2px;
+}
+
+.post-author .title {
+    font-weight: bold;
+    color: #282828;
+}
+
+.post-author .c_p {
+    padding: 0;
+    margin: 0;
+    padding-top: 2px;
+    font-size: 12px;
+}
+
+
+/*菜单*/
+
+.menu_link a {
+    white-space: nowrap;
+}
+
+
+/*隐藏内容*/
+
+.hidetitle {
+    font-weight: bold;
+    padding-bottom: 0!important;
+}
+
+
+/*archive_item*/
+
+.archive_item .title {
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.archive_item .textb {
+    font-size: 14px;
+    overflow: hidden;
+    height: 3rem;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.archive_item time {
+    font-size: 12px;
+}
+
+.browse_progress {
+    position: fixed;
+    display: none;
+    background: #fff;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    margin-left: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+.browse_progress .progress {
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: #231815;
+}
+
+
+/*灯箱*/
+
+img[data-original] {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+}
+
+
+/*代码高亮 a11y-dark.min.css*/
+
+.hljs-comment,
+.hljs-quote {
+    color: #d4d0ab
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+    color: #ffa07a
+}
+
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+    color: #f5ab35
+}
+
+.hljs-attribute {
+    color: #ffd700
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+    color: #abe338
+}
+
+.hljs-title,
+.hljs-section {
+    color: #00e0e0
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+    color: #dcc6e0
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    background: #2b2b2b;
+    color: #f8f8f2;
+    padding: .5em
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs-strong {
+    font-weight: bold
+}
+
+@media screen and (-ms-high-contrast:active) {
+    .hljs-addition,
+    .hljs-attribute,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-bullet,
+    .hljs-comment,
+    .hljs-link,
+    .hljs-literal,
+    .hljs-meta,
+    .hljs-number,
+    .hljs-params,
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-type,
+    .hljs-quote {
+        color: highlight
+    }
+    .hljs-keyword,
+    .hljs-selector-tag {
+        font-weight: bold
+    }
+}
+
+
+/*自适应*/
+
+@media only screen and (max-width: 993px) {
+    .logol {
+        padding-left: 16px;
+    }
+    .logol img {
+        height: 86px!important;
+    }
+}
