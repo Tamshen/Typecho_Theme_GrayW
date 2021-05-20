@@ -5,9 +5,9 @@
     <p>Copyright © <?php echo date('Y'); ?><a href="<?php $this->options->siteUrl(); ?>"> <?php $this->options->title(); ?></a>. All Rights Reserved. 
     
 
-    <?php if (!empty($this->options->ot_set_ckbbtn) && in_array('index_read_jd', $this->options->ot_set_ckbbtn)): ?>
-		Theme by <a href="https://github.com/Tamshen/Typecho_Theme_GrayW"> GrayW</a>
-	<?php endif; ?>
+    <?php if (!(!empty($this->options->ot_set_ckbbtn) && in_array('site_hide_cpy', $this->options->ot_set_ckbbtn))): ?>
+		  Theme by <a href="https://github.com/Tamshen/Typecho_Theme_GrayW"> GrayW</a>
+	  <?php endif; ?>
 
 
 </p>
