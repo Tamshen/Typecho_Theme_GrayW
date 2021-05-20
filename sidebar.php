@@ -1,6 +1,7 @@
 
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOther', $this->options->sidebarBlock)): ?>
     <div class="w3-margin w3-margin-top">
+        <a href="<?php if($this->options->sidebar_title){$this->options->sidebar_title();}else{echo '#请到控制台-设置外观修改';} ?>">
         <img src="<?php if($this->options->sidebar_imgUrl){$this->options->sidebar_imgUrl();}else{$this->options->themeUrl('img/2.jpg');} ?>" style="width:100%">
         <div class="w3-container w3-white">
             <div class="w3-padding-16">
@@ -12,6 +13,7 @@
             </div>
             </div>
         </div>
+        </a>
     </div>
     <?php endif; ?>
 

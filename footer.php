@@ -2,7 +2,15 @@
 </div></div>
 <!-- Footer -->
 <footer class="w3-container w3-dark-grey w3-padding-jumbo w3-margin-top w3-center">
-    <p>Copyright © <?php echo date('Y'); ?><a href="<?php $this->options->siteUrl(); ?>"> <?php $this->options->title(); ?></a>. All Rights Reserved. Theme by <a href="https://github.com/Tamshen/GrayW"> GrayW</a></p>
+    <p>Copyright © <?php echo date('Y'); ?><a href="<?php $this->options->siteUrl(); ?>"> <?php $this->options->title(); ?></a>. All Rights Reserved. 
+    
+
+    <?php if (!empty($this->options->ot_set_ckbbtn) && in_array('index_read_jd', $this->options->ot_set_ckbbtn)): ?>
+		Theme by <a href="https://github.com/Tamshen/Typecho_Theme_GrayW"> GrayW</a>
+	<?php endif; ?>
+
+
+</p>
 </footer>
 <!-- Top -->
 <div class="goTop"></div>
@@ -12,8 +20,8 @@
 <script src="<?php $this->options->themeUrl('js/jquery.lazyload.min.js'); ?>" ></script>
 <script src="<?php $this->options->themeUrl('js/jquery-viewer.min.js'); ?>" ></script>
 <script src="<?php $this->options->themeUrl('js/highlight.min.js'); ?>" ></script>
-<script src="<?php $this->options->themeUrl('js/tamshen.js'); ?>" ></script>
-<script type="text/javascript" src="https://tajs.qq.com/stats?sId=66415313" charset="UTF-8"></script>
+<script src="<?php $this->options->themeUrl('js/grayw.js'); ?>" ></script>
+
 
 
 

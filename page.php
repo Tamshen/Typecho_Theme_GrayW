@@ -1,8 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
-<div class="w3-col l8 s12">
-     <div class="w3-card-4 w3-margin-top w3-white">
+<div class="w3-col l9 s12">
+     <div class="w3-margin-top w3-white">
         <div class="w3-white"><!--w3-border-bottom-->
         <?php if($this->fields->title){ ?>   
         <div class="w3-container w3-padding-8">
@@ -14,7 +14,7 @@
 			<img src="<?php echo $diythumb; ?>" draggable="false" style="max-width:100%">	
 			<?php endif ; ?>
             <div class="w3-container article">
-                <?php $this->content(); ?>
+                <?php _e(showcontent($this->content,$this->user->hasLogin(),$this->cid,$this->user->mail));?>
             </div>
         </div>
         <?php $this->need('comments.php'); ?>
@@ -22,5 +22,5 @@
 </div>
 
  
-<?php echo '<div class="w3-col l4 w3-hide-medium w3-hide-small sidebar">'; $this->need('sidebar.php'); ?>
+<?php echo '<div class="w3-col l3 w3-hide-medium w3-hide-small sidebar">'; $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

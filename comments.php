@@ -9,9 +9,22 @@
  */
 ?>
 
+
 <?php
+
+
+//头像
+global $touxiang;
+$touxiang = false;
+if (!empty($this->options->ot_set_ckbbtn) && in_array('site_avatar', $this->options->ot_set_ckbbtn)){
+    $touxiang = true;
+}
+//头像
+
+
 function threadedComments($comments, $options)
     {
+        global $touxiang;
         $commentClass = '';
         if ($comments->authorId) {
             if ($comments->authorId == $comments->ownerId) {
@@ -40,7 +53,11 @@ function threadedComments($comments, $options)
 
         <div class="w3-row c-body" id="<?php $comments->theId(); ?>">
             <div class="w3-col" style="width:62px">
-                <?php $comments->gravatar('60', '');?>
+                <?php if ($touxiang): ?>
+					<img src="https://q.qlogo.cn/g?b=qq&nk=<?php $comments->mail();?>&s=100" alt="<?php $comments->author(); ?>" width="60" height="60">
+				<?php else: ?>
+					<?php $comments->gravatar('60', '');?>
+				<?php endif; ?>
             </div>
             <div class=" w3-rest w3-container">
                 <h4><?php echo $author; ?> <span class="w3-opacity w3-medium w3-hide-small"><?php $comments->date(); ?> <span class="w3-opacity w3-hide r w3-right"><?php $comments->reply('回复'); ?></span></span></h4>

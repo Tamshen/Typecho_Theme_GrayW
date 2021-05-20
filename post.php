@@ -22,59 +22,7 @@
 				</div>
     		</div>
             <div class="w3-container article">
-            <?php 
-            //登陆可看
-            if($this->user->hasLogin()) {
-                $content = preg_replace("/\[Forlogin\](.*?)\[\/Forlogin\]/sm",'
-                <div class="w3-container w3-green">
-                <div class="w3-large w3-padding-12 hidetitle">隐藏内容：</div>
-                <div class="w3-padding-12">$1</div>
-                </div>
-                ',$this->content);
-            }else{
-                $content = preg_replace("/\[Forlogin\](.*?)\[\/Forlogin\]/sm",'
-                <div class="w3-container w3-light-grey">
-                <div class="w3-large w3-padding-12 hidetitle">内容已隐藏</div>
-                <div class="w3-padding-12">******<span class="w3-right w3-text-grey w3-opacity">登录可见</span></div>
-                </div>
-                ',$this->content);
-            }
-            //评论后可看
-            $db = Typecho_Db::get();
-            $sql = $db->select()->from('table.comments')
-                ->where('cid = ?',$this->cid)
-                ->where('mail = ?', $this->remember('mail',true))
-                ->limit(1);
-            $result = $db->fetchAll($sql);
-            if($this->user->hasLogin() & $result) {
-                $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'
-                <div class="w3-container w3-green">
-                <div class="w3-large w3-padding-12 hidetitle">隐藏内容：</div>
-                <div class="w3-padding-12">$1</div>
-                </div>
-                ',$content);
-            }
-            else{
-                $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'
-                <div class="w3-container w3-light-grey">
-                <div class="w3-large w3-padding-12 hidetitle">内容已隐藏</div>
-                <div class="w3-padding-12">******<span class="w3-right w3-text-grey w3-opacity">登录评论可见</span></div>
-                </div>
-                ',$content);
-            }
-              
-            //解决微博图片
-            $content = preg_replace("/\t|wx[1-9].sinaimg.cn/","tvax1.sinaimg.cn",$content);
-            $content = preg_replace("/\t|ws[1-9].sinaimg.cn/","tvax1.sinaimg.cn",$content);
-            //图片懒加载
-            $loadingsrc = $this->options->themeUrl.'/img/loading.gif';
-            //$zhengze = '/<img(.+)src=[\'"]([^\'"]+)[\'"](.*)>/i';
-            $zhengze = '/<[img|IMG].(.*?)src=\"(.*?)\"(.*?)>/is';
-            //$content = preg_replace($zhengze,"<img data-original=\"\$2\" src=\"$loadingsrc\"\$3>\n<noscript>\$0</noscript>",$content);
-             $content = preg_replace($zhengze,"<img data-original=\"\$2\" src=\"$loadingsrc\"\$3>",$content);
-            //输出
-            echo $content ;
-            ?>
+                <?php _e(showcontent($this->content,$this->user->hasLogin(),$this->cid,$this->user->mail));?>
             </div>
         </div>
 
@@ -92,7 +40,11 @@
 <?php $iforiginal = $this->fields->iforiginal; if(!$iforiginal): ?>
     <div class="w3-margin w3-margin-top post-author w3-white">
         <div class="w3-center avatart">
-            <?php echo $this->author->gravatar(60);?>
+            <?php if (!empty($this->options->ot_set_ckbbtn) && in_array('site_avatar', $this->options->ot_set_ckbbtn)): ?>
+							<img src="https://q.qlogo.cn/g?b=qq&nk=<?php $this->author->mail();?>&s=100" alt="<?php $this->author(); ?>" width="60" height="60">
+						<?php else: ?>
+							<?php echo $this->author->gravatar(60);?>
+						<?php endif; ?>
             <p class="title w3-hover-opacity"><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a></p>
             <p class="w3-center c_p">本文由 <?php $this->author(); ?> 创作，版权所有</p>
             <p class="w3-center c_p">转载前请联系作者</p>

@@ -1,10 +1,10 @@
 <?php
 /**
- * GrayW
+ * 一袭灰白
  * 
- * @package GrayW Theme 
+ * @package GrayW
  * @author TAMSHEN
- * @version 1.0
+ * @version 1.1
  * @link http://tamshen.com
  */
 
@@ -17,14 +17,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 		<div class="w3-white">
 			<?php $diythumb = $this->fields->diythumb; if($diythumb == 'no') : ?>
 			<?php else : ?>
-				<img src="<?php echo showThumb($this,true); ?>" alt="<?php $this->title() ?>" style="width:100%">
+				<img src="<?php echo showThumb($this,true); ?>" alt="<?php $this->title() ?>" style="width:100%;">
 			<?php endif ; ?>
     		<div class="w3-container w3-padding-8">
         		<h3><b><?php $this->title() ?></b></h3>
 				<div class="post-info">
 					<span class="author">
 						<?php $iforiginal = $this->fields->iforiginal; if(!$iforiginal): ?>
-						<?php echo $this->author->gravatar(22);?><a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+
+						<?php if (!empty($this->options->ot_set_ckbbtn) && in_array('site_avatar', $this->options->ot_set_ckbbtn)): ?>
+							<img src="https://q.qlogo.cn/g?b=qq&nk=<?php $this->author->mail();?>&s=100" alt="<?php $this->author(); ?>" width="22" height="22">
+						<?php else: ?>
+							<?php echo $this->author->gravatar(22);?>
+						<?php endif; ?>
+
+						<a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a>
+
+						
+
+
+
+
 						<?php else : ?>
 						
 						<span class="w3-opacity ico_box">
@@ -54,7 +67,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 				</div>
     		</div>
             <div class="w3-container">
-                <div class="article post-list"><?php $this->content(); ?></div>
+                <div class="article post-list">
+					<?php if (!empty($this->options->ot_set_ckbbtn) && in_array('index_read_jd', $this->options->ot_set_ckbbtn)): ?>
+						<?php $this->content(); ?>
+					<?php else: ?>
+						<?php $this->excerpt(120, '……'); ?>
+					<?php endif; ?>
+					
+				</div>
                 <div class="w3-row">
                     <div class="w3-col m8 s12">
                         <p><a class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" href="<?php $this->permalink() ?>">READ MORE »</a></p>

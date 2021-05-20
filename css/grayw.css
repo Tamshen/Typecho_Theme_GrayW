@@ -43,15 +43,15 @@ h6 {
 input,
 textarea {
     outline: none;
-    border-top: 1px solid #00000000!important;
-    border-left: 1px solid #00000000!important;
-    border-right: 1px solid #00000000!important;
+    border-top: 1px solid #00000000 !important;
+    border-left: 1px solid #00000000 !important;
+    border-right: 1px solid #00000000 !important;
     /*border: 1px solid #ccc!important;*/
 }
 
 input:focus,
 textarea:focus {
-    border: 1px solid #808080!important;
+    border: 1px solid #808080 !important;
 }
 
 
@@ -75,6 +75,28 @@ header {
     transition: all .5s;
     -webkit-transition: all .5s;
     cursor: pointer;
+}
+
+
+/*手机菜单*/
+
+.menu_mb .link {
+    text-align: left;
+    max-height: 0;
+    -o-transition: all .8s;
+    transition: all .8s;
+    -webkit-transition: all .8s;
+    margin-top: 35px;
+}
+
+.menu_mb .link a {
+    font-size: 14px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 16px;
+    font-weight: bold;
+    color: #282828;
+    width: 100%;
 }
 
 
@@ -103,9 +125,16 @@ a {
 
 .sidebar .avatar,
 .c-body img {
-    margin-right: 16px!important;
-    border-radius: 50%!important;
-    float: left!important;
+    margin-right: 16px !important;
+    border-radius: 50% !important;
+    float: left !important;
+}
+
+.c-body .w3-container img {
+    max-width: 100%;
+    margin-right: 0 !important;
+    border-radius: 5px !important;
+    float: none !important;
 }
 
 
@@ -117,7 +146,9 @@ a {
     padding-top: 10px;
 }
 
-.article {}
+.article {
+    word-wrap: break-word
+}
 
 .article img {
     max-width: 100%;
@@ -230,7 +261,7 @@ pre {
 /*评论*/
 
 .c-body:hover .r {
-    display: initial!important;
+    display: initial !important;
 }
 
 ol {
@@ -356,7 +387,7 @@ ol ol {
 /*定义滚动条轨道 内阴影+圆角*/
 
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
 }
 
@@ -364,7 +395,7 @@ ol ol {
 /*定义滑块 内阴影+圆角*/
 
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
     background-color: #616161;
 }
 
@@ -484,7 +515,7 @@ ol ol {
 
 .hidetitle {
     font-weight: bold;
-    padding-bottom: 0!important;
+    padding-bottom: 0 !important;
 }
 
 
@@ -641,6 +672,6 @@ img[data-original] {
         padding-left: 16px;
     }
     .logol img {
-        height: 86px!important;
+        height: 86px !important;
     }
 }

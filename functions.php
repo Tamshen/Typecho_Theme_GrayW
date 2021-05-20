@@ -50,7 +50,7 @@ function themeConfig($form) {
         //console.log(box);
     }
     </script>
-    <h2>GrayW 主题设置  <a href="https://github.com/Tamshen" target="_blank">TAMSHEN</a></h2>
+    <h2>GrayW 主题设置</h2>
     
 
     
@@ -63,6 +63,19 @@ function themeConfig($form) {
   
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点-LOGO'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
     $form->addInput($logoUrl);
+
+
+    $ot_set_ckbbtn = new Typecho_Widget_Helper_Form_Element_Checkbox('ot_set_ckbbtn', 
+    array(
+    'index_read_jd' => _t('主页-使用 more 截断'),
+    'site_hide_cpy' => _t('隐藏 Theme by GrayW'),
+    'site_avatar' => _t('替换gravatar头像为QQ头像/QQ头像图片地址会包含你的邮箱地址/评论区也会开启')),
+    array(), _t('主页-设置'));
+    $form->addInput($ot_set_ckbbtn->multiMode());
+
+
+
+
 
     //菜单设置
     $memuqadd= new Typecho_Widget_Helper_Form_Element_Text('memuqadd', NULL, NULL, _t('<h3>菜单设置</h3>菜单前面链接 - <span class="ts_a" onclick="showhide(\'memuqadd\')" id="memuqadd">显示说明</span>'), _t('
@@ -137,6 +150,8 @@ function themeConfig($form) {
     '));
     $form->addInput($memuhadd);
 
+  
+
 
     //侧边栏
   	$sidebar_imgUrl = new Typecho_Widget_Helper_Form_Element_Text('sidebar_imgUrl', NULL, NULL, _t('<h3>侧边栏设置</h3>侧边栏-图片'), _t('在这里填入一个图片 URL 地址'));
@@ -145,8 +160,8 @@ function themeConfig($form) {
   	$sidebar_title = new Typecho_Widget_Helper_Form_Element_Text('sidebar_title', NULL, NULL, _t('侧边栏-小标题'), _t('Title'));
     $form->addInput($sidebar_title);
   
-  	$sidebar_des = new Typecho_Widget_Helper_Form_Element_Text('sidebar_des', NULL, NULL, _t('侧边栏-介绍'), _t('介绍'));
-    $form->addInput($sidebar_des);
+  	$sidebar_link = new Typecho_Widget_Helper_Form_Element_Text('sidebar_link', NULL, NULL, _t('侧边栏-跳转'), _t('点击跳转链接'));
+    $form->addInput($sidebar_link);
     
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
     array(
@@ -292,4 +307,62 @@ function getViewsStr($widget, $format = "{views}") {
 
 
 
+/**
+ *文章统一处理
+ */
+function showcontent($content,$c_login=false,$c_comments_1=false,$c_comments_2=false){
+    
+    //登陆可看
+    if($c_login) {
+        $content = preg_replace("/\[Forlogin\](.*?)\[\/Forlogin\]/sm",'
+        <div class="w3-container w3-green">
+        <div class="w3-large w3-padding-12 hidetitle">隐藏内容：</div>
+        <div class="w3-padding-12">$1</div>
+        </div>
+        ',$content);
+    }else{
+        $content = preg_replace("/\[Forlogin\](.*?)\[\/Forlogin\]/sm",'
+        <div class="w3-container w3-light-grey">
+        <div class="w3-large w3-padding-12 hidetitle">内容已隐藏</div>
+        <div class="w3-padding-12">******<span class="w3-right w3-text-grey w3-opacity">登录可见</span></div>
+        </div>
+        ',$content);
+    }
+    //评论后可看
+
+    //登陆回复
+    $db = Typecho_Db::get();
+    $sql = $db->select()->from('table.comments')
+        ->where('cid = ?',$c_comments_1)
+        ->where('mail = ?', $c_comments_2)
+        ->where('status = ?', 'approved')
+        //只有通过审核的评论才能看回复可见内容
+        ->limit(1);
+    $result = $db->fetchAll($sql);
+    //就检测是否有一条评论就行
+    if($c_login && $result[0]['status']) {
+        $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'
+        <div class="w3-container w3-green">
+        <div class="w3-large w3-padding-12 hidetitle">隐藏内容：</div>
+        <div class="w3-padding-12">$1</div>
+        </div>
+        ',$content);
+    }
+    else{
+        $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'
+        <div class="w3-container w3-light-grey">
+        <div class="w3-large w3-padding-12 hidetitle">内容已隐藏</div>
+        <div class="w3-padding-12">******<span class="w3-right w3-text-grey w3-opacity">登录评论可见</span></div>
+        </div>
+        ',$content);
+    }
+
+    //图片懒加载
+    $loadingsrc = Typecho_Widget::widget('Widget_Options')->themeUrl.'/img/loading.gif';
+    $zhengze = '/<[img|IMG].(.*?)src=\"(.*?)\"(.*?)>/is';
+    $content = preg_replace($zhengze,"<img data-original=\"\$2\" src=\"$loadingsrc\"\$3>",$content);
+    //输出
+    return $content ;
+  
+}
 

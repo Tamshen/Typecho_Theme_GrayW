@@ -17,17 +17,13 @@
 <!-- CSS -->
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/w3.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/viewer.min.css'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('css/tamshen.css?v=1.1'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('css/grayw.css?v=1.1'); ?>">
 <link href="<?php $this->options->icoUrl() ?>" mce_href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<script>
+var themeUrl = '<?php $this->options->themeUrl(''); ?>';
+</script>
 </head>
 <body class="w3-light-grey">
-    <nav class="w3-sidenav w3-black w3-card-2 w3-animate-top w3-center w3-xxlarge" style="display:none;padding-top:25%;width: 100%;">
-        <a href="javascript:void(0)" onclick="nav_close()" class="w3-closenav w3-jumbo w3-right w3-display-topright w3-padding-xxlarge">×</a>
-        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-        <?php while($pages->next()): ?>
-        <a class="w3-text-grey w3-hover-black" href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
-        <?php endwhile; ?>                     
-    </nav>
     <!-- Header -->
     <header class="w3-white" >
         <div class="w3-content tsw">
@@ -74,20 +70,19 @@
                             }
                         }?>
                         <?php if (!empty($this->options->memunav) && in_array('Showyemian', $this->options->memunav)): ?>
-                        <div class="w3-dropdown-hover">
-                            <button class="w3-btn w3-white">页面 <span style="font-size:.5rem;padding-left:10px">▼</span></button>
-                            <div class="w3-dropdown-content w3-border menu_link">
+
+                      
                                 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                                 <?php while($pages->next()): ?>
-                                <a  href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
+                                <a class="w3-btn w3-white" href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
                                 <?php endwhile; ?>
-                            </div>
-                        </div>
+                       
+                
                         <?php endif; ?>
                         <?php if (!empty($this->options->memunav) && in_array('Showfenlei', $this->options->memunav)): ?>
                         <div class="w3-dropdown-hover">
                             <button class="w3-btn w3-white">分类 <span style="font-size:.5rem;padding-left:10px">▼</span></button>
-                            <div class="w3-dropdown-content w3-border menu_link">
+                            <div class="w3-dropdown-content w3-border menu_link" style="max-height: 20rem;overflow-y: auto;">
                             <?php $this->widget('Widget_Metas_Category_List')->parse('<a  href="{permalink}" title="{name}">{name}({count})</a>'); ?>
                             </div>
                         </div>
@@ -95,7 +90,7 @@
                         <?php if (!empty($this->options->memunav) && in_array('Showguidang', $this->options->memunav)): ?>
                         <div class="w3-dropdown-hover">
                             <button class="w3-btn w3-white">归档 <span style="font-size:.5rem;padding-left:10px">▼</span></button>
-                            <div class="w3-dropdown-content w3-border menu_link">
+                            <div class="w3-dropdown-content w3-border menu_link" style="max-height: 20rem;overflow-y: auto;">
                             <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')->parse('<a href="{permalink}">{date}</a>'); ?>
                             </div>
                         </div>
@@ -133,6 +128,45 @@
                 </div>
             </div>
         </div>
+        <div class="menu_mb" style="display: none;">
+            <div class="link" style="max-height: 1000px;">
+                <?php 
+                        //单链接
+                        if ($this->options->memuqadd){
+                            $memuqaddarr = json_decode($this->options->memuqadd, true);
+                            foreach($memuqaddarr as $value)
+                            { 
+                              if($link[2]){
+                                      $linklink = $link[1];
+                                      $linkc = 'target="_blank"';
+                                    }else{
+                                      $linklink = $link[1];
+                                      $linkc = '';
+                                    }
+                              
+                                if($value[2]){
+                                  $linklink = $value[1];
+                                  $linkc = 'target="_blank"';
+                                }else{
+                                  $linklink = $value[1];
+                                  $linkc = '';
+                                }
+                                echo '<a class="w3-btn w3-white" '.$linkc.' href="'.$linklink.'">'.$value[0].'</a>';
+                                $linkc = '';
+                            }
+                        }?>
+                
+                <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                <?php while($pages->next()): ?>
+                <a class="w3-text-grey w3-hover-black" href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
+                <?php endwhile; ?>  
+                
+            </div>
+        </div>
+        <nav class="w3-animate-top w3-center w3-xxlarge" style="display:none;">
+            <a href="javascript:void(0)" onclick="nav_close()" class="w3-closenav w3-jumbo w3-right w3-display-topright w3-padding-xxlarge">×</a>
+                               
+        </nav>
     </header>
     <div class="w3-content tsw">
         <!-- Grid -->
