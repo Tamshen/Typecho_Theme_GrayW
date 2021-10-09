@@ -54,7 +54,7 @@ function threadedComments($comments, $options)
         <div class="w3-row c-body" id="<?php $comments->theId(); ?>">
             <div class="w3-col" style="width:62px">
                 <?php if ($touxiang): ?>
-					<img src="https://q.qlogo.cn/g?b=qq&nk=<?php $comments->mail();?>&s=100" alt="author avatar" width="60" height="60">
+					<img src="https://q.qlogo.cn/g?b=qq&nk=<?php $comments->mail();?>&s=100" alt="<?php $comments->author(); ?>" width="60" height="60">
 				<?php else: ?>
 					<?php $comments->gravatar('60', '');?>
 				<?php endif; ?>

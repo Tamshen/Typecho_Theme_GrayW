@@ -372,52 +372,6 @@ ol ol {
 }
 
 
-/*滚动条*/
-
-
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-
-::-webkit-scrollbar {
-    width: 10px;
-    height: 16px;
-    background-color: #F5F5F5;
-}
-
-
-/*定义滚动条轨道 内阴影+圆角*/
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-    background-color: #F5F5F5;
-}
-
-
-/*定义滑块 内阴影+圆角*/
-
-::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
-    background-color: #616161;
-}
-
-::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: #ddd;
-}
-
-:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #ddd;
-}
-
-::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #ddd;
-}
-
-:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: #ddd;
-}
 
 
 /*图标*/
